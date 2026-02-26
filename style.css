@@ -29,6 +29,10 @@ html {
   overflow-y: scroll; /* Erzwingt die vertikale Scrollleiste */
   scrollbar-gutter: stable; /* Reserviert den Platz für die Leiste (moderner Ansatz) */
 }
+body{
+  overflow-x: hidden;
+}
+
 
 
 
