@@ -1,0 +1,306 @@
+
+/* =========================
+   NAVBAR BASE (DESKTOP)
+========================= */
+
+#navbar{
+    width: 100%;
+    height: var(--navbar-height);
+    border-bottom: 2px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--primary);
+   
+}
+
+#navbar .navbarcontent{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+   
+    
+    
+}
+
+/* Logo */
+#navbar .navbarcontent h3{
+    font-size: 1.5rem;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+/* Navigation Desktop */
+.navbarcontent ul{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+/* Navigation Desktop Links mit Underline Animation */
+.navbarcontent ul li a {
+    position: relative; /* wichtig für ::after Positionierung */
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Unterstreichung */
+.navbarcontent ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #007bff;
+    transition: width 0.4s ease;
+}
+
+/* Hover Effekt */
+.navbarcontent ul li a:hover::after,
+.navbarcontent ul li a:focus::after {
+    width: 100%;
+}
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.hamburger {
+    display: none;
+    width: 35px;
+    height: 25px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: black;
+    left: 0;
+    transition: 0.3s;
+}
+
+.hamburger span:nth-child(1){ top: 0; }
+.hamburger span:nth-child(2){ top: 10px; }
+.hamburger span:nth-child(3){ top: 20px; }
+
+/* X Animation */
+.hamburger.active span:nth-child(1){
+    transform: rotate(45deg);
+    top: 10px;
+}
+
+.hamburger.active span:nth-child(2){
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 10px;
+}
+
+/* =========================
+   NAVBAR ADDITION (DESKTOP ONLY)
+========================= */
+
+.navbaraddition{
+    position: absolute;
+    top: var(--navbar-height);
+    width: 100%;
+    height: 0;
+    background-color: wheat;
+    display: flex;
+    overflow: hidden;
+    transition: 0.6s; 
+   
+}
+
+.navbaraddition.active{
+    height: 50vh;
+}
+
+.navbaraddition .text{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbaraddition .picture{
+    width: 70%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Boxen */
+.forHome,
+.forLeistungen,
+.forUeberUns,
+.forKontakt,
+.forImpressum{
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: 0.6s;
+}
+
+.forHome.active,
+.forLeistungen.active,
+.forUeberUns.active,
+.forKontakt.active,
+.forImpressum.active{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* =========================
+   MOBILE VERSION
+========================= */
+@media (max-width: 767px){
+
+    /* Hamburger sichtbar */
+    .hamburger{
+        display: block;
+    }
+
+    /* Desktop Zusatzbereich ausblenden */
+    .navbaraddition{
+        display: none;
+    }
+
+    /* =========================
+       MOBILE MENU CONTAINER
+    ========================= */
+
+    #navbar .navbarcontent ul{
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        background: white;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        max-height: 0;
+        overflow: hidden;
+
+        opacity: 0;
+        transform: translateY(-15px);
+
+        transition: 
+            max-height 0.5s ease,
+            opacity 0.3s ease,
+            transform 0.3s ease;
+
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    #navbar .navbarcontent ul.active{
+        max-height: 600px; /* groß genug für Inhalt */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE LINKS
+    ========================= */
+
+    #navbar .navbarcontent ul li{
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    #navbar .navbarcontent ul li:last-child{
+        border-bottom: none;
+    }
+
+    #navbar .navbarcontent ul li a{
+        display: block;
+        padding: 1.6rem 0;
+
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+
+        color: #222;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+    #navbar .navbarcontent ul li:nth-child(1){
+        margin-top: 1.6rem;
+    }
+
+    #navbar .navbarcontent ul li a:hover{
+        background: #f5f7fa;
+        color: #007bff;
+    }
+}
+
+
+
+
+
+
+
+/* =========================
+   SCHRIFTART & TEXT REFINEMENT
+========================= */
+
+/* 1. Import der Schriftart (oben ins CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+/* 2. Logo-Anpassung */
+#navbar .navbarcontent h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;       /* Extra fett für den Marken-Look */
+    letter-spacing: -0.04em; /* Enge Buchstabenabstände wirken moderner */
+    text-transform: uppercase;
+    color: black;
+}
+
+/* 3. Navigations-Links Desktop */
+.navbarcontent ul li a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;      /* Etwas kleiner für den High-End Look */
+    font-weight: 600;       /* Mittlere Stärke für bessere Lesbarkeit */
+    letter-spacing: 0.1em;  /* Mehr Laufweite bei Versalien (Großbuchstaben) */
+    text-transform: uppercase;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+/* 4. Mobile Links (innerhalb deines Media Queries) */
+@media (max-width: 767px) {
+    #navbar .navbarcontent ul li a {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: none; /* Mobile oft besser ohne durchgehende Großschreibung */
+    }
+}
+
+/* 5. Navbar Addition (Inhalte) */
+.navbaraddition .text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
