@@ -12,8 +12,8 @@
 /* --- Hero Section Layout --- */
 .hero-section {
     position: relative;
-    height: 100vh;
-    min-height: 700px;
+    min-height: calc(100dvh - var(--navbar-height));
+    padding-top: var(--navbar-height);
     width: 100%;
     display: flex;
     align-items: center;
@@ -23,7 +23,6 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--text-light);
 }
-
 /* Hintergrundbild mit leichtem Zoom-Effekt */
 .hero-background {
     position: absolute;
@@ -1192,6 +1191,7 @@ p {
     }
 
 }
+
 
 
 
