@@ -253,7 +253,7 @@ p {
 }
 @media (max-width: 767px) {
     .hero-section{
-        top: var(--navbar-height);
+        margin-top: var(--navbar-height);
     }
     .hero-container {
         padding: 0 20px; /* weniger Seitenabstand */
@@ -1191,4 +1191,5 @@ p {
     }
 
 }
+
 
