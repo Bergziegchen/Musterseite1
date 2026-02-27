@@ -257,6 +257,7 @@ p {
     }
     .hero-container {
         padding: 0 20px; /* weniger Seitenabstand */
+         margin-top: var(--navbar-height);
     }
 
     .hero-text {
@@ -1191,5 +1192,6 @@ p {
     }
 
 }
+
 
 
