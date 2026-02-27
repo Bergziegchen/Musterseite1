@@ -1,0 +1,57 @@
+:root{
+
+  /*for navbar */
+    --navbar-height: 13vh;
+
+
+    /* --------- */
+
+     /* for entry */
+    --primary-color: #f39c12; /* Solar-Orange/Gelb */
+    --secondary-color: #2c3e50;
+    --text-light: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+
+
+    /* ------- */
+}
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll; /* Erzwingt die vertikale Scrollleiste */
+  scrollbar-gutter: stable; /* Reserviert den Platz für die Leiste (moderner Ansatz) */
+}
+
+body{
+  overflow-x: hidden;
+}
+
+/* Verhindert seitliches Wackeln/Scrollen auf Mobilgeräten */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Schützt vor zu breiten Medien */
+img, canvas, iframe {
+    max-width: 100%;
+}
+img {
+    display: block;       /* Entfernt komische Abstände unten */
+    max-width: 100%;      /* Verhindert das Rausragen */
+    height: auto;         /* Behält das Seitenverhältnis bei */
+    width: auto;          /* Verhindert das "Zusammenquetschen" auf 0px */
+    object-fit: cover;    /* Sorgt dafür, dass Bilder in Platzhaltern gut aussehen */
+}
