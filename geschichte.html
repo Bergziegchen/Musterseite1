@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution | SolarTech Frontier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styleforgeschichte.css">
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<div class="progress-bar"></div>
+
+<header class="vfx-hero">
+    <div class="container">
+        <div class="hero-inner" data-aos="zoom-out" data-aos-duration="2000">
+            <span class="glitch-tag">Energy Horizon 2026</span>
+            <h1>Licht in <span class="glow-text">Energie</span> verwandeln.</h1>
+            <p>Die Geschichte einer Vision, die heute die Welt antreibt.</p>
+            <div class="mouse-scroll"></div>
+        </div>
+    </div>
+</header>
+
+<section class="story-stream">
+    <div class="dynamic-line">
+        <div class="line-filler"></div>
+    </div>
+
+    <div class="container overflow-hidden">
+        <div class="milestone" data-aos="fade-right">
+            <div class="milestone-content glass">
+                <div class="number">01</div>
+                <h2 class="year">2005</h2>
+                <h3>Der Urknall</h3>
+                <p>In einer Garage gegründet, mit nichts als einem Schaltplan und dem unerschütterlichen Glauben an die Kraft der Photonen.</p>
+                <div class="tech-specs"><span>Vision</span><span>Inception</span></div>
+            </div>
+        </div>
+
+        <div class="milestone right" data-aos="fade-left">
+            <div class="milestone-content glass">
+                <div class="number">02</div>
+                <h2 class="year">2014</h2>
+                <h3>Die Skalierung</h3>
+                <p>Installation der ersten Gigawatt-Kapazität. SolarTech wird vom Geheimtipp zum Standard für industrielle Energieautarkie.</p>
+                <div class="tech-specs"><span>Growth</span><span>Impact</span></div>
+            </div>
+        </div>
+
+        <div class="milestone" data-aos="fade-up">
+            <div class="milestone-content glass highlight">
+                <div class="number">03</div>
+                <h2 class="year">Heute</h2>
+                <h3>Die Revolution</h3>
+                <p>KI-gesteuerte Smart-Grids und Speichersysteme der nächsten Generation. Wir verwalten nicht nur Energie – wir erschaffen Freiheit.</p>
+                <div class="tech-specs"><span>AI Control</span><span>Next Gen</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="end-screen">
+    <div class="container">
+        <h2 data-aos="reveal">Werde Teil der Geschichte.</h2>
+        <a href="index.html#Kontaktinformationen" class="btn-hyper">
+            <span>Projekt Starten</span>
+            <div class="btn-glow"></div>
+        </a>
+    </div>
+</div>
+
+
+
+
+<footer class="premium-footer">
+    <div class="footer-glow"></div>
+    
+    <div class="footer-main">
+        <div class="footer-column brand-column">
+            <div class="footer-logo">SOLAR<span class="thin">2026</span></div>
+            <p class="brand-bio">Pioniere der Eigenenergie. Wir gestalten die Infrastruktur für Ihre persönliche Freiheit.</p>
+            <div class="footer-status">
+                <span class="status-dot"></span> System-Status: Optimal
+            </div>
+        </div>
+
+        <div class="footer-column links-column">
+            <div class="link-group">
+                <span class="group-title">Navigation</span>
+                <a href="#">Expertise</a>
+                <a href="#">Projekte</a>
+                <a href="index.html#Kontaktinformationen">Kontakt</a>
+            </div>
+            <div class="link-group">
+                <span class="group-title">Recht</span>
+                <a href="rechtliches.html">Impressum</a>
+                <a href="rechtliches.html">Datenschutz</a>
+            </div>
+        </div>
+
+        <div class="footer-column social-column">
+            <span class="group-title">Connect</span>
+            <div class="social-grid">
+                <a href="#" class="s-link">Instagram</a>
+                <a href="#" class="s-link">LinkedIn</a>
+                <a href="#" class="s-link">Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-legal">
+        <div class="legal-content">
+            <span class="copy">&copy; 2026 Solar Autarkie</span>
+            <div class="legal-dots">
+                <span>Made with Precision</span>
+                <span class="separator"></span>
+                <span>Germany</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: false, mirror: true });
+
+    // Timeline Filler Logic
+    const filler = document.querySelector('.line-filler');
+    window.addEventListener('scroll', () => {
+        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        filler.style.height = scrollPercent + "%";
+    });
+
+    // Background Particle Engine
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    
+    function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = [];
+        for(let i=0; i<80; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5
+            });
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        ctx.fillStyle = "rgba(255, 180, 0, 0.3)";
+        particles.forEach(p => {
+            p.x += p.speedX; p.y += p.speedY;
+            if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+            if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+            ctx.fill();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', init);
+    init(); animate();
+</script>
+</body>
+</html>
