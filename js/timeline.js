@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.p-step-item');
 
     const images = [
-        "img/csm_AdobeStock_1194407041_03284bb3ae.webp",
-        "img/PV-Anlagen-Planung.jpg",
-        "img/67f7a54070d82a04a3f03e48_monteur-auf-dach.webp"
+        "csm_AdobeStock_1194407041_03284bb3ae.webp",
+        "PV-Anlagen-Planung.jpg",
+        "67f7a54070d82a04a3f03e48_monteur-auf-dach.webp"
     ];
     let currentIndex = 0;
 
@@ -57,4 +57,5 @@ area.addEventListener('click', () => {
             img.classList.remove('is-switching');
         };
     }, 300);
+
 });
