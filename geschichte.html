@@ -123,19 +123,38 @@
     </div>
 </footer>
 
-
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ once: false, mirror: true });
 
-    // Timeline Filler Logic
+    // --- High-Speed Timeline Logic ---
     const filler = document.querySelector('.line-filler');
-    window.addEventListener('scroll', () => {
-        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-        filler.style.height = scrollPercent + "%";
-    });
+    const storyStream = document.querySelector('.story-stream');
 
-    // Background Particle Engine
+  function updateTimeline() {
+    const rect = storyStream.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Wir berechnen den Fortschritt basierend darauf, 
+    // wie weit die Sektion bereits an der Bildschirmmitte vorbeigescrollt ist.
+    const startAnchor = windowHeight / 2; 
+    const distanceScrolled = startAnchor - rect.top;
+    const totalDistance = rect.height;
+
+    // Multiplikator auf 1.0 für absolut synchrones Tempo
+    let progress = (distanceScrolled / totalDistance) * 100;
+
+    // Exakte Grenzen, damit nichts springt
+    if (rect.top > startAnchor) progress = 0;
+    if (progress > 100) progress = 100;
+
+    filler.style.height = progress + "%";
+}
+
+    window.addEventListener('scroll', updateTimeline);
+    window.addEventListener('resize', updateTimeline);
+
+    // --- Background Particle Engine ---
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -170,7 +189,7 @@
     }
 
     window.addEventListener('resize', init);
-    init(); animate();
+    init(); 
+    animate();
+    updateTimeline(); // Initialer Check beim Laden
 </script>
-</body>
-</html>
